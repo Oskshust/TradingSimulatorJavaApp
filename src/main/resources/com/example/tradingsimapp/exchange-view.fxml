@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tradingsimapp.GUIController">
+   <children>
+      <ImageView fitHeight="758.0" fitWidth="1200.0">
+         <image>
+            <Image url="@../../../franklin_charts_boomin.jpg" />
+         </image>
+      </ImageView>
+      <VBox fx:id="buttonsPanel" layoutX="362.0" layoutY="44.0">
+         <children>
+            <TitledPane fx:id="createPanel" animated="false" prefHeight="239.0" prefWidth="207.0" text="CHOSE TYPE AND CREATE">
+              <content>
+                <AnchorPane fx:id="anchorOfCreatePanel" minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="0.0">
+                     <children>
+                        <VBox fx:id="vboxOfAnchor" layoutX="4.0" layoutY="3.0" prefHeight="202.0" prefWidth="200.0">
+                           <children>
+                              <SplitPane fx:id="splitlaneOfRadio" orientation="VERTICAL" prefHeight="70.0" prefWidth="196.0">
+                                 <items>
+                                    <ComboBox fx:id="assetsCombo" onAction="#comboChangeAsset" prefHeight="48.0" prefWidth="198.0" />
+                                 </items>
+                              </SplitPane>
+                              <Button fx:id="newMarketButton" mnemonicParsing="false" onAction="#newMarketClicked" prefHeight="103.0" prefWidth="200.0" text="CREATE A NEW MARKET" />
+                              <Button fx:id="newAssetButton" mnemonicParsing="false" onAction="#newAssetClicked" prefHeight="114.0" prefWidth="200.0" text="CREATE A NEW ASSET" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="206.0" prefWidth="207.0" text="DRAW / ERASE AN ASSET">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox fx:id="drawEraseBox" layoutX="4.0" layoutY="2.0" prefHeight="171.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="drawButton" mnemonicParsing="false" onAction="#drawAsset" prefHeight="90.0" prefWidth="206.0" text="DRAW THE CLICKED ASSET" />
+                              <Button fx:id="eraseButton" mnemonicParsing="false" onAction="#eraseAsset" prefHeight="92.0" prefWidth="210.0" text="ERASE THE CLICKED ASSET" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
+      <HBox fx:id="bbPanel" layoutX="362.0" layoutY="540.0" prefHeight="62.0" prefWidth="207.0">
+         <children>
+            <Label fx:id="bullLabel" contentDisplay="CENTER" prefHeight="75.0" prefWidth="52.0" text=" BULL" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Slider fx:id="bbSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" prefHeight="62.0" prefWidth="121.0" showTickMarks="true" value="5.0" />
+            <Label fx:id="bearLabel" contentDisplay="CENTER" prefHeight="66.0" prefWidth="73.0" text="BEAR" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+      </HBox>
+      <VBox fx:id="boxfListChart" layoutX="569.0" layoutY="44.0" prefHeight="644.0" prefWidth="600.0">
+         <children>
+            <HBox fx:id="listsAboveGraph" prefHeight="239.0" prefWidth="601.0">
+               <children>
+                  <ListView fx:id="listWithMarkets" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="listWithAssets" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="listWithInvestors" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <LineChart fx:id="lineChart" title="Asset price vs time">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </VBox>
+      <Text fx:id="titleBox" fill="WHITE" layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CABBAGE ORACLE BY OSKAR SZUDZIK" wrappingWidth="328.0">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="36.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="infoTextBox" layoutX="14.0" layoutY="472.0" prefHeight="262.0" prefWidth="336.0" promptText="Here appears info" />
+      <Label fx:id="bbLabel" layoutX="348.0" layoutY="610.0" prefHeight="96.0" prefWidth="234.0" text="&quot;Bull Bear&quot; said fast sounds like&quot;Bill Burr&quot;. In fact, this label is supposed to show the value of &quot;Bill Burr&quot; parameter" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="16.0" />
+         </font>
+      </Label>
+      <Circle fx:id="startCircle" fill="#12e120" layoutX="75.0" layoutY="208.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="startButton" layoutX="33.0" layoutY="186.0" mnemonicParsing="false" onAction="#start" text="START">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <HBox fx:id="indexHbox" layoutX="14.0" layoutY="281.0" prefHeight="170.0" prefWidth="336.0">
+         <children>
+            <ListView fx:id="indicesList" prefHeight="170.0" prefWidth="146.0" />
+            <ListView fx:id="assetsOfIndex" prefHeight="170.0" prefWidth="147.0" />
+            <VBox fx:id="indexButtonsVbox" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="newIndexButton" mnemonicParsing="false" onAction="#newIndexButtonClicked" prefHeight="83.0" prefWidth="79.0" text="NEW INDEX" wrapText="true" />
+                  <Button fx:id="addToIndex" mnemonicParsing="false" onAction="#addAssetToIndex" prefHeight="88.0" prefWidth="85.0" text="ADD TO INDEX" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <TextField fx:id="indexNameField" layoutX="182.0" layoutY="235.0" prefHeight="26.0" prefWidth="169.0" promptText="Name of your index" />
+   </children>
+</AnchorPane>
