@@ -39,7 +39,7 @@ java --module-path "PATH_TO_JAVAFX_LIB" --add-modules javafx.controls,javafx.fxm
 
 * I am proud of the work I did here. 
 
-![final view](../../../../resources/app_view.png)
+![final view](src/main/example/resources/app_view.png)
 
 ## Sources
 
